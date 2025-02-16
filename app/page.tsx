@@ -9,7 +9,7 @@ export default function Home() {
       <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md py-4 sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-            Cobria
+            <img src="https://cobria.vercel.app/icon.svg" /> Cobria
           </h1>
           <nav>
             <ul className="flex space-x-6">
