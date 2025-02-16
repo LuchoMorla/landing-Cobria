@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, BarChart2, Bot, Zap } from "lucide-react"
 
 export default function Home() {
+  const linkGithub = "https://github.com/LuchoMorla";
+  const linkLinkedin = "https://www.linkedin.com/in/luis-morla-mora-96a0a51b4/";
+  const linkWhatsapp = "https://wa.me/593992366527/?text=Hola%20vengo%20de%20tu%20portafolio%20como%20estas?";
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-950">
       <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md py-4 sticky top-0 z-50">
@@ -138,12 +142,17 @@ export default function Home() {
               ¿Listo para revolucionar su proceso de cobranza con un enfoque ético y eficiente? Póngase en contacto con
               nosotros hoy mismo.
             </p>
+            <ul>
+              <li ><Link href={linkGithub} ><Image target="_blank" src="https://morlucho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgithub.49eb0122.png&w=128&q=75" alt='boton de Github para ver perfil o contactar' width={60} height={60} /></Link></li>      
+              <li ><Link href={linkLinkedin} ><Image target="_blank" src="https://morlucho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flinkedin.81aa7aa3.png&w=128&q=75" alt='Bonton de Linkedin para ver perfil o contactar' width={60} height={60} /></Link></li> 
+              <li ><Link href={linkWhatsapp} ><Image target="_blank" src="https://morlucho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwhatsapp-Icon.0f9403b2.png&w=96&q=75" alt='' width={48} height={48} /></Link></li>
+            </ul>
             <Button
               asChild
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
             >
-              <Link href="mailto:info@cobria.com" className="flex items-center">
+              <Link href="https://www.aynimar.com/contact" className="flex items-center">
                 Contactar <ArrowRight className="ml-2" />
               </Link>
             </Button>
