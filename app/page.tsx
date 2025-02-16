@@ -142,7 +142,7 @@ export default function Home() {
               ¿Listo para revolucionar su proceso de cobranza con un enfoque ético y eficiente? Póngase en contacto con
               nosotros hoy mismo.
             </p>
-            <ul className="flex justify-center items-center min-h-screen space-x-6">
+            <ul className="flex justify-center space-x-4 py-8">
               <li ><Link href={linkGithub} ><img src="https://morlucho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgithub.49eb0122.png&w=128&q=75" alt='boton de Github para ver perfil o contactar' width={60} height={60} /></Link></li>      
               <li ><Link href={linkLinkedin} ><img src="https://morlucho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flinkedin.81aa7aa3.png&w=128&q=75" alt='Bonton de Linkedin para ver perfil o contactar' width={60} height={60} /></Link></li> 
               <li ><Link href={linkWhatsapp} ><img src="https://morlucho.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwhatsapp-Icon.0f9403b2.png&w=96&q=75" alt='' width={48} height={48} /></Link></li>
