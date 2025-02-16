@@ -45,10 +45,10 @@
     "embla-carousel-react": "8.5.1",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "^12.0.0",  // Aseguramos que estamos en Next.js 12
+    "next": "^12.0.0",
     "next-themes": "^0.4.4",
-    "react": "^17.0.2",  // React 17 para compatibilidad
-    "react-dom": "^17.0.2",  // React 17 para compatibilidad
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-day-picker": "8.10.1",
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
@@ -61,8 +61,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
-    "@types/react": "^17.0.2",  // Tipos de React 17 para evitar problemas
-    "@types/react-dom": "^17.0.2",  // Tipos de React DOM 17
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
