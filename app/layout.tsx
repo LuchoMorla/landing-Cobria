@@ -6,11 +6,11 @@ import { Inter } from "next/font/google"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Cobria - Cobranza Extrajudicial Inteligente y Ética",
+  title: "Cobria — Recupera hasta un 35% más de tu cartera vencida con IA",
   description:
-    "Optimice su proceso de cobranza con nuestra solución automatizada por IA. Herramientas avanzadas de análisis de datos para una cobranza eficiente y ética.",
+    "Cobria automatiza la cobranza masiva con Agentes de IA éticos y multicanal (WhatsApp, SMS, Voz, Email). Diseñado para Cooperativas, Bancos y Fintechs en Ecuador y LATAM.",
   keywords:
-    "cobranza, extrajudicial, automatización, IA, inteligencia artificial, recuperación de deudas, análisis de datos, ética",
+    "cobranza inteligente, recuperación de cartera, bot de cobranza, automatización cobranza Ecuador, skip tracing, agentes IA cobranza, WhatsApp cobranza, cooperativas SEPS",
   generator: "v0.dev",
   openGraph: {
     title: "Cobria - Cobranza Extrajudicial Inteligente y Ética",
