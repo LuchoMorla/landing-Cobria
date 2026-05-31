@@ -1,7 +1,11 @@
+"use client"
+
 import type React from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
 import {
   Accordion,
   AccordionContent,
@@ -22,12 +26,13 @@ import {
   FileText,
   PhoneCall,
   Mail,
+  Loader2,
 } from "lucide-react"
 
 // ── Constants ────────────────────────────────────────────────────────────────
 const WHATSAPP_DEMO =
-  "https://wa.me/593992366527/?text=Hola%2C%20vengo%20de%20la%20landing%20de%20Cobria%20y%20quiero%20agendar%20una%20demo%20de%2015%20minutos."
-const APP_URL = "https://cobria.vercel.app/"
+  "https://wa.me/593992366527/?text=Hola%2C%20vengo%20de%20la%20landing%20de%20Collectux%20y%20quiero%20agendar%20una%20demo%20de%2015%20minutos."
+const APP_URL = "https://app.collectux.com/register"
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
@@ -38,8 +43,8 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-[#0a1f6e] font-extrabold text-xl tracking-tight">
-            <img src="https://cobria.vercel.app/icon.svg" alt="Cobria logo" width={26} height={26} />
-            Cobria
+            <img src="/icon.svg" alt="Collectux logo" width={26} height={26} />
+            Collectux
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
             <Link href="#como-funciona" className="hover:text-[#0a1f6e] transition-colors">Cómo funciona</Link>
@@ -75,7 +80,7 @@ export default function Home() {
               </h1>
 
               <p className="text-lg text-blue-100 mb-8 max-w-xl md:mx-0 mx-auto">
-                Cobria automatiza la cobranza masiva con{" "}
+                Collectux automatiza la cobranza masiva con{" "}
                 <strong className="text-white">Agentes de IA éticos y multicanal</strong>{" "}
                 — WhatsApp, SMS, Voz y Email — que negocian de forma humana,{" "}
                 <strong className="text-white">24/7</strong>, respetando horarios regulatorios.
@@ -114,21 +119,17 @@ export default function Home() {
             {/* WhatsApp Phone Mockup */}
             <div className="flex-shrink-0 w-64 md:w-72">
               <div className="relative mx-auto w-64 md:w-72 bg-[#111827] rounded-[2.75rem] shadow-2xl p-3 border-4 border-[#1f2937]">
-                {/* Camera notch */}
                 <div className="mx-auto mb-2 w-16 h-1.5 bg-[#374151] rounded-full" />
-                {/* Screen */}
                 <div className="rounded-[2rem] overflow-hidden bg-[#e5ddd5]">
-                  {/* Chat header */}
                   <div className="bg-[#075e54] px-4 py-3 flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-[#25d366] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
                       AI
                     </div>
                     <div>
-                      <p className="text-white text-sm font-semibold leading-tight">Agente Sofía · Cobria</p>
+                      <p className="text-white text-sm font-semibold leading-tight">Agente Sofía · Collectux</p>
                       <p className="text-green-300 text-xs">En línea</p>
                     </div>
                   </div>
-                  {/* Chat messages */}
                   <div className="p-3 space-y-2 min-h-[280px]">
                     <WaBubble from="bot">
                       Hola, ¿se encuentra <strong>Carlos Andrade</strong> disponible?
@@ -145,7 +146,6 @@ export default function Home() {
                     </WaBubble>
                   </div>
                 </div>
-                {/* Home indicator */}
                 <div className="mx-auto mt-2 w-20 h-1 bg-[#374151] rounded-full" />
               </div>
             </div>
@@ -295,7 +295,7 @@ export default function Home() {
         <section id="beneficios" className="py-20 px-6 bg-[#0a1f6e] text-white">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
-              <Badge className="mb-3 bg-white/15 text-white border-0">Por qué Cobria</Badge>
+              <Badge className="mb-3 bg-white/15 text-white border-0">Por qué Collectux</Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Beneficios concretos para tu institución
               </h2>
@@ -386,8 +386,23 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── LEAD CAPTURE ────────────────────────────────────────── */}
+        <section id="demo" className="py-20 px-6 bg-white">
+          <div className="max-w-2xl mx-auto text-center">
+            <Badge className="mb-3 bg-green-100 text-green-700 border-0">Acceso anticipado</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              ¿Listo para ver Collectux en acción?
+            </h2>
+            <p className="text-gray-500 mb-8 max-w-lg mx-auto">
+              Deja tu email y te agendamos una demo personalizada de 15 minutos.
+              Sin compromisos — solo resultados concretos para tu cartera.
+            </p>
+            <LeadCaptureForm />
+          </div>
+        </section>
+
         {/* ── FAQ ─────────────────────────────────────────────────── */}
-        <section id="faq" className="py-20 px-6">
+        <section id="faq" className="py-20 px-6 bg-gray-50">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-3 bg-gray-100 text-gray-700 border-0">Preguntas frecuentes</Badge>
@@ -428,8 +443,8 @@ export default function Home() {
             </Button>
             <p className="mt-6 text-blue-300 text-sm">
               O escríbenos:{" "}
-              <a href="mailto:info@cobria.ec" className="text-white underline hover:text-green-300 transition-colors">
-                info@cobria.ec
+              <a href="mailto:info@collectux.com" className="text-white underline hover:text-green-300 transition-colors">
+                info@collectux.com
               </a>
             </p>
           </div>
@@ -440,16 +455,16 @@ export default function Home() {
       <footer className="bg-[#050e30] text-gray-400 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
-            <p className="text-white font-bold text-lg mb-1">Cobria S.A.S.</p>
+            <p className="text-white font-bold text-lg mb-1">Collectux S.A.S.</p>
             <p className="text-sm">RUC: 1793227195001</p>
             <p className="text-sm">Quito — Ecuador</p>
-            <a href="mailto:info@cobria.ec"
+            <a href="mailto:info@collectux.com"
               className="text-sm text-gray-400 hover:text-white transition-colors">
-              info@cobria.ec
+              info@collectux.com
             </a>
           </div>
           <div className="text-sm md:text-right">
-            <p>&copy; {new Date().getFullYear()} Cobria S.A.S. Todos los derechos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} Collectux S.A.S. Todos los derechos reservados.</p>
             <p className="mt-1 text-xs text-gray-500">
               Plataforma SaaS de cobranza con IA · Ecuador &amp; LATAM
             </p>
@@ -457,6 +472,104 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  )
+}
+
+// ── Lead Capture Form ─────────────────────────────────────────────────────────
+
+function LeadCaptureForm() {
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [company, setCompany] = useState("")
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [message, setMessage] = useState("")
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email || !name) return
+
+    setStatus("loading")
+    try {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://collectux-api.up.railway.app"
+      const res = await fetch(`${backendUrl}/api/leads`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, company }),
+      })
+
+      if (res.ok) {
+        setStatus("success")
+        setMessage("¡Perfecto! Te contactaremos en menos de 24 horas para agendar tu demo.")
+        setEmail("")
+        setName("")
+        setCompany("")
+      } else {
+        throw new Error("Error del servidor")
+      }
+    } catch {
+      // Fallback: abrir WhatsApp con los datos
+      const text = encodeURIComponent(
+        `Hola, me llamo ${name} de ${company || "mi empresa"} y quiero una demo de Collectux. Mi email: ${email}`
+      )
+      window.open(`https://wa.me/593992366527/?text=${text}`, "_blank")
+      setStatus("success")
+      setMessage("Te redirigimos a WhatsApp para coordinar tu demo.")
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
+        <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-3" />
+        <p className="text-green-800 font-semibold text-lg">{message}</p>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-md mx-auto">
+      <Input
+        type="text"
+        placeholder="Tu nombre *"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+        className="rounded-xl border-gray-200 h-12 text-base"
+      />
+      <Input
+        type="email"
+        placeholder="Tu email corporativo *"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="rounded-xl border-gray-200 h-12 text-base"
+      />
+      <Input
+        type="text"
+        placeholder="Nombre de tu empresa (opcional)"
+        value={company}
+        onChange={(e) => setCompany(e.target.value)}
+        className="rounded-xl border-gray-200 h-12 text-base"
+      />
+      <Button
+        type="submit"
+        disabled={status === "loading" || !email || !name}
+        size="lg"
+        className="bg-[#0a1f6e] hover:bg-[#0d2a8a] text-white font-bold rounded-xl px-8 h-12 text-base shadow-lg"
+      >
+        {status === "loading" ? (
+          <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Enviando...</>
+        ) : (
+          <>Solicitar mi demo gratis <ArrowRight className="w-4 h-4 ml-2" /></>
+        )}
+      </Button>
+      {status === "error" && (
+        <p className="text-red-500 text-sm">{message}</p>
+      )}
+      <p className="text-xs text-gray-400 mt-1">
+        Sin spam. Solo te contactamos para coordinar la demo.
+      </p>
+    </form>
   )
 }
 
@@ -543,16 +656,16 @@ function AgentCard({
 
 const FAQ_ITEMS = [
   {
-    q: "¿Cobria reemplaza a mis gestores de cobranza?",
-    a: "No. Cobria potencia a tu equipo. La IA maneja el contacto masivo y repetitivo, mientras tus gestores se enfocan en casos de alto valor, negociaciones complejas y aprobación de pagos. Es una alianza, no un reemplazo.",
+    q: "¿Collectux reemplaza a mis gestores de cobranza?",
+    a: "No. Collectux potencia a tu equipo. La IA maneja el contacto masivo y repetitivo, mientras tus gestores se enfocan en casos de alto valor, negociaciones complejas y aprobación de pagos. Es una alianza, no un reemplazo.",
   },
   {
-    q: "¿Cuánto tiempo toma implementar Cobria?",
+    q: "¿Cuánto tiempo toma implementar Collectux?",
     a: "El primer día. Registras tu empresa, subes tu cartera en Excel y el sistema opera automáticamente con un horario Lunes–Viernes 8 AM–6 PM preconfigurado. Sin instalaciones, sin IT, sin meses de implementación.",
   },
   {
     q: "¿Es legal contactar deudores por WhatsApp con un bot?",
-    a: "Sí, dentro de los límites regulatorios. Cobria opera exclusivamente en horarios permitidos (Lunes a Viernes, 8:00 AM – 6:00 PM), mantiene trazabilidad completa y el agente de IA nunca amenaza ni presiona. Cumple con los estándares de la SEPS y la SBS.",
+    a: "Sí, dentro de los límites regulatorios. Collectux opera exclusivamente en horarios permitidos (Lunes a Viernes, 8:00 AM – 6:00 PM), mantiene trazabilidad completa y el agente de IA nunca amenaza ni presiona. Cumple con los estándares de la SEPS y la SBS.",
   },
   {
     q: "¿Qué pasa si el deudor cambió de número?",
@@ -563,7 +676,7 @@ const FAQ_ITEMS = [
     a: "El deudor envía la foto del comprobante por WhatsApp. El Agente Aurora lo analiza con IA-OCR, verifica monto y banco, y lo pasa al dashboard de tu supervisor con un solo click para aprobarlo o rechazarlo — con trazabilidad de quién aprobó y cuándo.",
   },
   {
-    q: "¿Cuánto cuesta Cobria?",
+    q: "¿Cuánto cuesta Collectux?",
     a: "Contáctanos para una demo personalizada. Tenemos planes según el volumen de tu cartera y la cantidad de agentes que necesites. Sin contratos de largo plazo — pagas por lo que usas.",
   },
 ]
