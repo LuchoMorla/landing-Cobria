@@ -455,7 +455,7 @@ export default function Home() {
       <footer className="bg-[#050e30] text-gray-400 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
-            <p className="text-white font-bold text-lg mb-1">Collectux S.A.S.</p>
+            <p className="text-white font-bold text-lg mb-1">Cobria S.A.S.</p>
             <p className="text-sm">RUC: 1793227195001</p>
             <p className="text-sm">Quito — Ecuador</p>
             <a href="mailto:info@collectux.com"
