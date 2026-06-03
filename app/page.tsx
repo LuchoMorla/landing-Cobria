@@ -464,7 +464,7 @@ export default function Home() {
             </a>
           </div>
           <div className="text-sm md:text-right">
-            <p>&copy; {new Date().getFullYear()} Collectux S.A.S. Todos los derechos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} Cobria S.A.S. Todos los derechos reservados.</p>
             <p className="mt-1 text-xs text-gray-500">
               Plataforma SaaS de cobranza con IA · Ecuador &amp; LATAM
             </p>
