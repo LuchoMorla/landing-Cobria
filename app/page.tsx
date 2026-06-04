@@ -31,7 +31,7 @@ import {
 
 // ── Constants ────────────────────────────────────────────────────────────────
 const WHATSAPP_DEMO =
-  "https://wa.me/593992366527/?text=Hola%2C%20vengo%20de%20la%20landing%20de%20Collectux%20y%20quiero%20agendar%20una%20demo%20de%2015%20minutos."
+  "https://wa.me/593992366527/?text=Hola%2C%20vengo%20de%20la%20landing%20de%20CollectUX%20y%20quiero%20agendar%20una%20demo%20de%2015%20minutos."
 const APP_URL = "https://app.collectux.com/register"
 
 // ── Page ─────────────────────────────────────────────────────────────────────
@@ -43,8 +43,8 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-[#0a1f6e] font-extrabold text-xl tracking-tight">
-            <img src="/icon.svg" alt="Collectux logo" width={26} height={26} />
-            Collectux
+            <img src="https://app.collectux.com/icon.svg" alt="CollectUX logo" width={26} height={26} />
+            CollectUX
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
             <Link href="#como-funciona" className="hover:text-[#0a1f6e] transition-colors">Cómo funciona</Link>
@@ -80,7 +80,7 @@ export default function Home() {
               </h1>
 
               <p className="text-lg text-blue-100 mb-8 max-w-xl md:mx-0 mx-auto">
-                Collectux automatiza la cobranza masiva con{" "}
+                CollectUX automatiza la cobranza masiva con{" "}
                 <strong className="text-white">Agentes de IA éticos y multicanal</strong>{" "}
                 — WhatsApp, SMS, Voz y Email — que negocian de forma humana,{" "}
                 <strong className="text-white">24/7</strong>, respetando horarios regulatorios.
@@ -126,7 +126,7 @@ export default function Home() {
                       AI
                     </div>
                     <div>
-                      <p className="text-white text-sm font-semibold leading-tight">Agente Sofía · Collectux</p>
+                      <p className="text-white text-sm font-semibold leading-tight">Agente Sofía · CollectUX</p>
                       <p className="text-green-300 text-xs">En línea</p>
                     </div>
                   </div>
@@ -295,7 +295,7 @@ export default function Home() {
         <section id="beneficios" className="py-20 px-6 bg-[#0a1f6e] text-white">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
-              <Badge className="mb-3 bg-white/15 text-white border-0">Por qué Collectux</Badge>
+              <Badge className="mb-3 bg-white/15 text-white border-0">Por qué CollectUX</Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Beneficios concretos para tu institución
               </h2>
@@ -391,7 +391,7 @@ export default function Home() {
           <div className="max-w-2xl mx-auto text-center">
             <Badge className="mb-3 bg-green-100 text-green-700 border-0">Acceso anticipado</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              ¿Listo para ver Collectux en acción?
+              ¿Listo para ver CollectUX en acción?
             </h2>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto">
               Deja tu email y te agendamos una demo personalizada de 15 minutos.
@@ -509,7 +509,7 @@ function LeadCaptureForm() {
     } catch {
       // Fallback: abrir WhatsApp con los datos
       const text = encodeURIComponent(
-        `Hola, me llamo ${name} de ${company || "mi empresa"} y quiero una demo de Collectux. Mi email: ${email}`
+        `Hola, me llamo ${name} de ${company || "mi empresa"} y quiero una demo de CollectUX. Mi email: ${email}`
       )
       window.open(`https://wa.me/593992366527/?text=${text}`, "_blank")
       setStatus("success")
@@ -656,16 +656,16 @@ function AgentCard({
 
 const FAQ_ITEMS = [
   {
-    q: "¿Collectux reemplaza a mis gestores de cobranza?",
-    a: "No. Collectux potencia a tu equipo. La IA maneja el contacto masivo y repetitivo, mientras tus gestores se enfocan en casos de alto valor, negociaciones complejas y aprobación de pagos. Es una alianza, no un reemplazo.",
+    q: "¿CollectUX reemplaza a mis gestores de cobranza?",
+    a: "No. CollectUX potencia a tu equipo. La IA maneja el contacto masivo y repetitivo, mientras tus gestores se enfocan en casos de alto valor, negociaciones complejas y aprobación de pagos. Es una alianza, no un reemplazo.",
   },
   {
-    q: "¿Cuánto tiempo toma implementar Collectux?",
+    q: "¿Cuánto tiempo toma implementar CollectUX?",
     a: "El primer día. Registras tu empresa, subes tu cartera en Excel y el sistema opera automáticamente con un horario Lunes–Viernes 8 AM–6 PM preconfigurado. Sin instalaciones, sin IT, sin meses de implementación.",
   },
   {
     q: "¿Es legal contactar deudores por WhatsApp con un bot?",
-    a: "Sí, dentro de los límites regulatorios. Collectux opera exclusivamente en horarios permitidos (Lunes a Viernes, 8:00 AM – 6:00 PM), mantiene trazabilidad completa y el agente de IA nunca amenaza ni presiona. Cumple con los estándares de la SEPS y la SBS.",
+    a: "Sí, dentro de los límites regulatorios. CollectUX opera exclusivamente en horarios permitidos (Lunes a Viernes, 8:00 AM – 6:00 PM), mantiene trazabilidad completa y el agente de IA nunca amenaza ni presiona. Cumple con los estándares de la SEPS y la SBS.",
   },
   {
     q: "¿Qué pasa si el deudor cambió de número?",
@@ -676,7 +676,7 @@ const FAQ_ITEMS = [
     a: "El deudor envía la foto del comprobante por WhatsApp. El Agente Aurora lo analiza con IA-OCR, verifica monto y banco, y lo pasa al dashboard de tu supervisor con un solo click para aprobarlo o rechazarlo — con trazabilidad de quién aprobó y cuándo.",
   },
   {
-    q: "¿Cuánto cuesta Collectux?",
+    q: "¿Cuánto cuesta CollectUX?",
     a: "Contáctanos para una demo personalizada. Tenemos planes según el volumen de tu cartera y la cantidad de agentes que necesites. Sin contratos de largo plazo — pagas por lo que usas.",
   },
 ]

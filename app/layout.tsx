@@ -6,31 +6,31 @@ import { Inter } from "next/font/google"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Collectux — Recupera hasta un 35% más de tu cartera vencida con IA",
+  title: "CollectUX — Recupera hasta un 35% más de tu cartera vencida con IA",
   description:
-    "Collectux automatiza la cobranza masiva con Agentes de IA éticos y multicanal (WhatsApp, SMS, Voz, Email). Diseñado para Cooperativas, Bancos y Fintechs en Ecuador y LATAM.",
+    "CollectUX automatiza la cobranza masiva con Agentes de IA éticos y multicanal (WhatsApp, SMS, Voz, Email). Diseñado para Cooperativas, Bancos y Fintechs en Ecuador y LATAM.",
   keywords:
-    "cobranza inteligente, recuperación de cartera, bot de cobranza, automatización cobranza Ecuador, skip tracing, agentes IA cobranza, WhatsApp cobranza, cooperativas SEPS, Collectux",
+    "cobranza inteligente, recuperación de cartera, bot de cobranza, automatización cobranza Ecuador, skip tracing, agentes IA cobranza, WhatsApp cobranza, cooperativas SEPS, CollectUX",
   generator: "v0.dev",
   openGraph: {
-    title: "Collectux - Cobranza Extrajudicial Inteligente y Ética",
+    title: "CollectUX - Cobranza Extrajudicial Inteligente y Ética",
     description:
       "Optimice su proceso de cobranza con IA y herramientas avanzadas de análisis de datos.",
     url: "https://collectux.com",
-    siteName: "Collectux",
+    siteName: "CollectUX",
     images: [
       {
         url: "https://collectux.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Collectux — Plataforma de cobranza inteligente",
+        alt: "CollectUX — Plataforma de cobranza inteligente",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Collectux - Cobranza Inteligente",
+    title: "CollectUX - Cobranza Inteligente",
     description:
       "Solución de cobranza automatizada por IA para mayor eficiencia y ética.",
     images: ["https://collectux.com/og-image.jpg"],
