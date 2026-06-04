@@ -55,7 +55,7 @@ export default function Home() {
           </nav>
           <div className="flex items-center gap-3">
             <a
-              href="https://app.collectux.com/login"
+              href="https://app.collectux.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-gray-400 hover:text-gray-800 transition-colors duration-200 text-sm font-medium"
