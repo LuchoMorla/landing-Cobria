@@ -27,6 +27,7 @@ import {
   PhoneCall,
   Mail,
   Loader2,
+  LogIn,
 } from "lucide-react"
 
 // ── Constants ────────────────────────────────────────────────────────────────
@@ -52,12 +53,23 @@ export default function Home() {
             <Link href="#beneficios"    className="hover:text-[#0a1f6e] transition-colors">Beneficios</Link>
             <Link href="#faq"           className="hover:text-[#0a1f6e] transition-colors">FAQ</Link>
           </nav>
-          <Button asChild size="sm"
-            className="bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold rounded-xl px-5 shadow">
-            <Link href={WHATSAPP_DEMO} target="_blank" rel="noopener noreferrer">
-              <MessageSquare className="w-4 h-4 mr-2" /> Agendar Demo
-            </Link>
-          </Button>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://app.collectux.com/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-gray-400 hover:text-gray-800 transition-colors duration-200 text-sm font-medium"
+            >
+              <LogIn className="w-4 h-4" />
+              <span className="hidden sm:inline">Iniciar Sesión</span>
+            </a>
+            <Button asChild size="sm"
+              className="bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold rounded-xl px-5 shadow">
+              <Link href={WHATSAPP_DEMO} target="_blank" rel="noopener noreferrer">
+                <MessageSquare className="w-4 h-4 mr-2" /> Agendar Demo
+              </Link>
+            </Button>
+          </div>
         </div>
       </header>
 
