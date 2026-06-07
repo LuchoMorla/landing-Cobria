@@ -35,8 +35,54 @@ const WHATSAPP_DEMO =
   "https://wa.me/593992366527/?text=Hola%2C%20vengo%20de%20la%20landing%20de%20CollectUX%20y%20quiero%20agendar%20una%20demo%20de%2015%20minutos."
 const APP_URL = "https://app.collectux.com/register"
 
+// IDs de plan deben ser idénticos a los que acepta POST /api/paymentez-billing/open-subscription
+const ANNUAL_DISCOUNT = 0.2
+const PRICING_PLANS = [
+  {
+    key: "start",
+    name: "START",
+    priceUSD: 59,
+    highlighted: false,
+    features: [
+      "1 Agente IA incluido",
+      "WhatsApp + Email",
+      "Dashboard básico",
+      "Campañas de cobranza",
+      "Seguimiento automático",
+    ],
+  },
+  {
+    key: "business",
+    name: "BUSINESS",
+    priceUSD: 149,
+    highlighted: true,
+    features: [
+      "Hasta 5 Agentes IA",
+      "Analytics avanzados",
+      "Segmentación de cartera",
+      "Onboarding asistido",
+      "Soporte prioritario",
+    ],
+  },
+  {
+    key: "recovery_partner",
+    name: "RECOVERY PARTNER",
+    priceUSD: 399,
+    highlighted: false,
+    features: [
+      "Agentes IA ilimitados",
+      "Estrategias personalizadas",
+      "Gestión semioperada",
+      "Workflows avanzados",
+      "SLA garantizado",
+    ],
+  },
+] as const
+
 // ── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
+  const [pricingCycle, setPricingCycle] = useState<"monthly" | "annual">("monthly")
+
   return (
     <div className="flex flex-col min-h-screen bg-white text-gray-900 font-sans antialiased">
 
@@ -51,6 +97,7 @@ export default function Home() {
             <Link href="#como-funciona" className="hover:text-[#0a1f6e] transition-colors">Cómo funciona</Link>
             <Link href="#agentes"       className="hover:text-[#0a1f6e] transition-colors">Agentes IA</Link>
             <Link href="#beneficios"    className="hover:text-[#0a1f6e] transition-colors">Beneficios</Link>
+            <Link href="#precios"       className="hover:text-[#0a1f6e] transition-colors">Precios</Link>
             <Link href="#faq"           className="hover:text-[#0a1f6e] transition-colors">FAQ</Link>
           </nav>
           <div className="flex items-center gap-3">
@@ -107,8 +154,8 @@ export default function Home() {
                 </Button>
                 <Button asChild variant="outline" size="lg"
                   className="border-white/30 text-white bg-transparent hover:bg-white/10 rounded-xl px-8 py-4 text-base">
-                  <Link href={APP_URL} target="_blank" rel="noopener noreferrer">
-                    Ver la plataforma <ArrowRight className="w-4 h-4 ml-2" />
+                  <Link href="#precios">
+                    Ver Precios <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </div>
@@ -395,6 +442,126 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── PRECIOS ─────────────────────────────────────────────── */}
+        <section id="precios" className="py-20 px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-3 bg-blue-100 text-[#0a1f6e] border-0">Planes y Precios</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Elige el plan que potencia tu operación
+              </h2>
+              <p className="text-gray-500 max-w-xl mx-auto">
+                Sin contratos de largo plazo. Puedes cancelar cuando quieras.
+              </p>
+
+              {/* Toggle mensual / anual */}
+              <div className="flex items-center justify-center gap-3 mt-6">
+                <span className={`text-sm font-semibold transition-colors ${pricingCycle === "monthly" ? "text-[#0a1f6e]" : "text-gray-400"}`}>
+                  Mensual
+                </span>
+                <button
+                  aria-label="Cambiar ciclo de facturación"
+                  onClick={() => setPricingCycle(pricingCycle === "monthly" ? "annual" : "monthly")}
+                  className={`relative w-12 h-6 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0a1f6e] ${
+                    pricingCycle === "annual" ? "bg-[#0a1f6e]" : "bg-gray-300"
+                  }`}
+                >
+                  <span
+                    className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${
+                      pricingCycle === "annual" ? "translate-x-6" : "translate-x-0"
+                    }`}
+                  />
+                </button>
+                <span className={`text-sm font-semibold transition-colors ${pricingCycle === "annual" ? "text-[#0a1f6e]" : "text-gray-400"}`}>
+                  Anual
+                </span>
+                {pricingCycle === "annual" && (
+                  <span className="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full animate-in fade-in">
+                    2 meses gratis
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {PRICING_PLANS.map((plan) => {
+                const annualTotal   = Math.round(plan.priceUSD * 12 * (1 - ANNUAL_DISCOUNT))
+                const annualMonthly = parseFloat((plan.priceUSD * (1 - ANNUAL_DISCOUNT)).toFixed(2))
+                const href = `${APP_URL}?plan=${plan.key}&billing=${pricingCycle}`
+
+                return (
+                  <div
+                    key={plan.key}
+                    className={`relative flex flex-col rounded-2xl p-8 transition-shadow hover:shadow-xl ${
+                      plan.highlighted
+                        ? "border-2 border-[#0a1f6e] shadow-xl ring-4 ring-[#0a1f6e]/5 bg-white"
+                        : "border border-gray-100 shadow-sm bg-white"
+                    }`}
+                  >
+                    {plan.highlighted && (
+                      <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#0a1f6e] text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
+                        Más popular
+                      </span>
+                    )}
+
+                    <h3 className="text-xl font-extrabold text-gray-900 mb-1">{plan.name}</h3>
+
+                    {pricingCycle === "monthly" ? (
+                      <div className="mb-5">
+                        <span className="text-4xl font-extrabold text-[#0a1f6e]">${plan.priceUSD}</span>
+                        <span className="text-gray-400 text-sm ml-1">/mes USD</span>
+                      </div>
+                    ) : (
+                      <div className="mb-5">
+                        <span className="text-4xl font-extrabold text-[#0a1f6e]">${annualTotal}</span>
+                        <span className="text-gray-400 text-sm ml-1">/año USD</span>
+                        <p className="text-sm text-gray-500 mt-0.5">
+                          ${annualMonthly}/mes ·{" "}
+                          <span className="text-green-600 font-semibold">20% ahorro</span>
+                        </p>
+                      </div>
+                    )}
+
+                    <ul className="space-y-3 mb-8 flex-grow">
+                      {plan.features.map((f) => (
+                        <li key={f} className="flex items-start gap-2.5 text-sm text-gray-600">
+                          <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`block text-center py-3 px-6 rounded-xl font-semibold text-sm transition-all ${
+                        plan.highlighted
+                          ? "bg-[#0a1f6e] text-white hover:bg-[#0d2a8a] shadow-lg shadow-blue-900/25"
+                          : "border-2 border-[#0a1f6e] text-[#0a1f6e] hover:bg-[#0a1f6e] hover:text-white"
+                      }`}
+                    >
+                      Empezar con {plan.name} →
+                    </a>
+                  </div>
+                )
+              })}
+            </div>
+
+            <p className="text-center text-sm text-gray-400 mt-8">
+              Todos los planes incluyen un fee único de activación según el tamaño de tu cartera.{" "}
+              <a
+                href={WHATSAPP_DEMO}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0a1f6e] hover:underline"
+              >
+                ¿Necesitas ayuda para elegir? Escríbenos →
+              </a>
+            </p>
           </div>
         </section>
 
@@ -689,6 +856,6 @@ const FAQ_ITEMS = [
   },
   {
     q: "¿Cuánto cuesta CollectUX?",
-    a: "Contáctanos para una demo personalizada. Tenemos planes según el volumen de tu cartera y la cantidad de agentes que necesites. Sin contratos de largo plazo — pagas por lo que usas.",
+    a: "Tenemos 3 planes: START desde $59/mes, BUSINESS desde $149/mes y RECOVERY PARTNER desde $399/mes. Con facturación anual obtienes 2 meses gratis (20% de descuento). Todos los planes incluyen un fee único de activación según el tamaño de tu cartera. Sin contratos — cancelas cuando quieras. Ver todos los precios en la sección #Precios de esta página.",
   },
 ]
