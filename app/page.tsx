@@ -28,6 +28,7 @@ import {
   Mail,
   Loader2,
   LogIn,
+  Coins,
 } from "lucide-react"
 
 // ── Constants ────────────────────────────────────────────────────────────────
@@ -51,6 +52,7 @@ export default function Home() {
             <Link href="#como-funciona" className="hover:text-[#0a1f6e] transition-colors">Cómo funciona</Link>
             <Link href="#agentes"       className="hover:text-[#0a1f6e] transition-colors">Agentes IA</Link>
             <Link href="#beneficios"    className="hover:text-[#0a1f6e] transition-colors">Beneficios</Link>
+            <Link href="#costos"        className="hover:text-[#0a1f6e] transition-colors">Costos</Link>
             <Link href="#faq"           className="hover:text-[#0a1f6e] transition-colors">FAQ</Link>
           </nav>
           <div className="flex items-center gap-3">
@@ -356,6 +358,90 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── COSTO POR SERVICIO ──────────────────────────────────── */}
+        <section id="costos" className="py-20 px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <Badge className="mb-3 bg-yellow-100 text-yellow-700 border-0">Transparencia total</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Costos por acción — sin sorpresas
+              </h2>
+              <p className="text-gray-500 max-w-xl mx-auto">
+                CollectUX funciona con créditos prepagados. Cada acción consume créditos según el canal.
+                Tú controlas el gasto — sin cuotas ocultas, sin cobros por contacto fallido.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
+              {[
+                {
+                  icon: <MessageSquare className="w-6 h-6" />,
+                  channel: "WhatsApp",
+                  credits: 5,
+                  note: "por mensaje",
+                  iconBg: "bg-green-50 text-green-600",
+                  border: "border-green-200",
+                  accent: "text-green-700",
+                },
+                {
+                  icon: <PhoneCall className="w-6 h-6" />,
+                  channel: "Llamada de voz",
+                  credits: 15,
+                  note: "por llamada",
+                  iconBg: "bg-purple-50 text-purple-600",
+                  border: "border-purple-200",
+                  accent: "text-purple-700",
+                },
+                {
+                  icon: <FileText className="w-6 h-6" />,
+                  channel: "SMS",
+                  credits: 3,
+                  note: "por mensaje",
+                  iconBg: "bg-blue-50 text-blue-600",
+                  border: "border-blue-200",
+                  accent: "text-blue-700",
+                },
+                {
+                  icon: <Mail className="w-6 h-6" />,
+                  channel: "Email",
+                  credits: 2,
+                  note: "por correo",
+                  iconBg: "bg-orange-50 text-orange-600",
+                  border: "border-orange-200",
+                  accent: "text-orange-700",
+                },
+              ].map(({ icon, channel, credits, note, iconBg, border, accent }) => (
+                <div
+                  key={channel}
+                  className={`bg-white border ${border} rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow`}
+                >
+                  <div className={`w-12 h-12 ${iconBg} rounded-xl flex items-center justify-center mx-auto mb-4`}>
+                    {icon}
+                  </div>
+                  <p className="font-semibold text-gray-700 text-sm mb-2">{channel}</p>
+                  <p className={`text-4xl font-extrabold ${accent} mb-1`}>{credits}</p>
+                  <p className="text-xs text-gray-400">créditos · {note}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-[#f0f4ff] border border-[#c7d4f8] rounded-2xl p-6 flex flex-col md:flex-row gap-4 items-start">
+              <div className="flex-shrink-0 w-11 h-11 bg-[#0a1f6e]/10 rounded-xl flex items-center justify-center">
+                <Coins className="w-6 h-6 text-[#0a1f6e]" />
+              </div>
+              <div>
+                <p className="font-bold text-[#0a1f6e] mb-1">¿Cómo funcionan los créditos?</p>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Cada plan incluye un saldo inicial de créditos proporcional a su precio mensual.
+                  WhatsApp es el canal más económico y de mayor alcance; las llamadas de voz consumen más créditos
+                  por el costo de telefonía real. Cuando tu saldo se agote, puedes recargar créditos adicionales desde
+                  tu panel. <strong>Solo pagas por lo que tu agente realmente ejecuta</strong> — no se cobran intentos fallidos.
+                </p>
+              </div>
             </div>
           </div>
         </section>
